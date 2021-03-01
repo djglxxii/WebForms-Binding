@@ -10,6 +10,7 @@ namespace AspNetWebForms.Controls
     {
         public string Password { get; set; }
         public string ShowPasswordLocalKey { get; set; } = "Show Password";
+        public string Disabled { get; set; } = "true";
 
         protected override void Render(HtmlTextWriter writer)
         {
@@ -17,10 +18,16 @@ namespace AspNetWebForms.Controls
             writer.AddAttribute("class", this.CssClass);
             
             var showOnEnterScript = new StringBuilder();
-            showOnEnterScript.Append("$refs.unmaskedInput.style='display: initial'");
+            //showOnEnterScript.Append("$refs.unmaskedInput.style='display: initial'");
+            //showOnEnterScript.Append("$refs.maskedInput.style='display: none'");
+            
+            showOnEnterScript.Append(
+                "$refs.unmaskedInput.style = $refs.maskedInput.disabled ? 'display: none' : 'display: initial'");
             showOnEnterScript.Append(";");
-            showOnEnterScript.Append("$refs.maskedInput.style='display: none'");
-
+            showOnEnterScript.Append(
+                "$refs.maskedInput.style = $refs.maskedInput.disabled ? 'display: initial' : 'display: none'");
+            
+            
             var hideOnLeave = new StringBuilder();
             hideOnLeave.Append("$refs.maskedInput.style='display: initial'");
             hideOnLeave.Append(";");
@@ -33,6 +40,7 @@ namespace AspNetWebForms.Controls
             var maskedInput = new HtmlInputPassword();
             maskedInput.Attributes.Add("x-ref", "maskedInput");
             maskedInput.Attributes.Add("x-model", "Password");
+            //maskedInput.Attributes.Add("x-bind:disabled", Disabled);
             maskedInput.Name = this.ClientID;
             maskedInput.Value = this.Password;
             maskedInput.RenderControl(writer);
