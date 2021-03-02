@@ -13,14 +13,5 @@ namespace AspNetWebForms.Pages
 
     public partial class MyPage2
     {
-
-        /// <summary>
-        /// MyPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AspNetWebForms.Controls.CustomPasswordBox MyPassword;
     }
 }

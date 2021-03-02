@@ -24,5 +24,7 @@ namespace AspNetWebForms.Pages
 
         [Required] public string MyPassword { get; set; } = "password1";
 
+        public bool IsThere { get; set; } = false;
+
     }
 }
