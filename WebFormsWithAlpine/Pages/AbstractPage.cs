@@ -38,6 +38,7 @@ namespace WebFormsWithAlpine.Pages
 
         protected override void CreateChildControls()
         {
+            // find our root form control and add the Alpine x-data attribute to it.
             MasterPage mp = this.Controls.OfType<MasterPage>().FirstOrDefault();
             HtmlForm form = mp?.Controls.OfType<HtmlForm>().FirstOrDefault();
             if (form != null)
