@@ -150,6 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomFormValueProvider.cs" />
     <Compile Include="Infrastructure\JsonDataAttribute.cs" />
     <Compile Include="Pages\AbstractPage.cs" />
     <Compile Include="Pages\MyPage.aspx.cs">
@@ -177,7 +178,7 @@
     <Compile Include="UserControls\AbstractControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControls\CustomFormValueProvider.cs" />
+    <Compile Include="UserControls\CustomInputText.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -3,18 +3,19 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using Newtonsoft.Json;
+using WebFormsWithAlpine.Infrastructure;
 
 namespace WebFormsWithAlpine.Pages
 {
-    public abstract class AbstractPage<T> : Page where T : new()
+    public abstract class AbstractPage<T> : Page where T : class, new()
     {
-        protected T Model { get; set; }
+        protected T Model { get; set; } = new T();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
             {
-                //TryUpdateModel()
+                TryUpdateModel();
             }
             else
             {
@@ -34,6 +35,12 @@ namespace WebFormsWithAlpine.Pages
             var data = JsonConvert.SerializeObject(Model);
 
             return data;
+        }
+
+        public virtual bool TryUpdateModel()
+        {
+            var provider = new CustomFormValueProvider<T>(this);
+            return TryUpdateModel(Model, provider);
         }
 
         protected override void CreateChildControls()
