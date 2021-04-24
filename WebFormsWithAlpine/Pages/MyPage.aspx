@@ -17,6 +17,13 @@
             ID="Lastname"
             Value="<%#: Model.Lastname %>"/>
     </div>
-
+    
+    <div>
+            <cc1:CustomInputText
+                runat="server"
+                ID="Zipcode"
+                Value="<%#: Model.Zipcode %>"/>
+        </div>
+    
     <button runat="server">Submit</button>
 </asp:Content>

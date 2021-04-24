@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="Infrastructure\CustomFormValueProvider.cs" />
     <Compile Include="Infrastructure\JsonDataAttribute.cs" />
+    <Compile Include="Infrastructure\PropertyInfoHelpers.cs" />
     <Compile Include="Pages\AbstractPage.cs" />
     <Compile Include="Pages\MyPage.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

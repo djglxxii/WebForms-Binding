@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.UI;
 using Newtonsoft.Json;
 using WebFormsWithAlpine.Infrastructure;
@@ -13,7 +14,7 @@ namespace WebFormsWithAlpine.Pages
             model.Firstname = "David";
             model.Lastname = "Gardner";
             model.Zipcode = 22963;
-            model.Foo = new Foo {Bar1 = "Bar One", Bar2 = "Bar Two"};
+            model.MyList = new List<string> {"A", "B", "C"};
             
             return model;
         }
@@ -24,14 +25,9 @@ namespace WebFormsWithAlpine.Pages
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public int Zipcode { get; set; }
-     
+        
         [JsonData]
-        public Foo Foo { get; set; }
-    }
-
-    public class Foo
-    {
-        public string Bar1 { get; set; }
-        public string Bar2 { get; set; }
+        public List<string> MyList { get; set; }
+            = new List<string>();
     }
 }

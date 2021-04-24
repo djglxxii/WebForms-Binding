@@ -31,6 +31,15 @@ namespace WebFormsWithAlpine.Pages {
         protected global::WebFormsWithAlpine.UserControls.CustomInputText Lastname;
         
         /// <summary>
+        /// Zipcode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
+        /// </remarks>
+        protected global::WebFormsWithAlpine.UserControls.CustomInputText Zipcode;
+        
+        /// <summary>
         /// Master property.
         /// </summary>
         /// <remarks>
