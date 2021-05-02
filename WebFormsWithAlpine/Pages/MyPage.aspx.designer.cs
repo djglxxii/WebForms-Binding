@@ -13,6 +13,15 @@ namespace WebFormsWithAlpine.Pages {
     public partial class MyPage {
         
         /// <summary>
+        /// BodyContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
+        /// </remarks>
+        protected global::WebFormsWithAlpine.UserControls.CustomContent BodyContent;
+        
+        /// <summary>
         /// Firstname control.
         /// </summary>
         /// <remarks>

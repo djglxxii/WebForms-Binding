@@ -179,6 +179,7 @@
     <Compile Include="UserControls\AbstractControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="UserControls\CustomContent.cs" />
     <Compile Include="UserControls\CustomInputText.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

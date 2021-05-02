@@ -9,6 +9,7 @@ using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 using WebFormsWithAlpine.Pages;
 using WebFormsWithAlpine.UserControls;
 
@@ -19,7 +20,8 @@ namespace WebFormsWithAlpine.Infrastructure
         private readonly ModelBindingExecutionContext _context;
         private readonly string _uniqueId;
         private readonly char _separator;
-        private readonly Dictionary<string, PropertyInfo> _piMap 
+
+        private readonly Dictionary<string, PropertyInfo> _piMap
             = new Dictionary<string, PropertyInfo>();
 
         private NameValueCollection Form => _context.HttpContext.Request.Form;
@@ -59,18 +61,31 @@ namespace WebFormsWithAlpine.Infrastructure
         public ValueProviderResult GetValue(string key)
         {
             if (String.IsNullOrEmpty(key)) return null;
-            
+
             string prefixedKey = $"{_uniqueId}{_separator}{key}";
             string val = Form[prefixedKey];
 
             var prop = _piMap[key];
+
+            return new ValueProviderResult(val, val ?? string.Empty, CultureInfo.InvariantCulture);
+
             if (prop.IsJsonSerialized())
             {
-                return new ValueProviderResult(val, val ?? string.Empty, CultureInfo.InvariantCulture);
+                object instance;
+                if (val == null)
+                {
+                    instance = Activator.CreateInstance(prop.PropertyType);
+                    var instanceJson = JsonConvert.SerializeObject(instance);
+                    
+                    return new ValueProviderResult(instance, instanceJson, CultureInfo.InvariantCulture);
+                }
+
+                instance = JsonConvert.DeserializeObject(val, prop.PropertyType);
+                return new ValueProviderResult(instance, val, CultureInfo.InvariantCulture);
             }
             else
             {
-                return new ValueProviderResult(val, val ?? string.Empty, CultureInfo.InvariantCulture);   
+                return new ValueProviderResult(val, val ?? string.Empty, CultureInfo.InvariantCulture);
             }
         }
 

@@ -30,7 +30,7 @@ namespace WebFormsWithAlpine.Pages
             return new T();
         }
 
-        protected virtual string GetJsonData()
+        public virtual string GetJsonData()
         {
             var data = JsonConvert.SerializeObject(Model);
 
@@ -43,18 +43,18 @@ namespace WebFormsWithAlpine.Pages
             return TryUpdateModel(Model, provider);
         }
 
-        protected override void CreateChildControls()
-        {
-            // find our root form control and add the Alpine x-data attribute to it.
-            MasterPage mp = this.Controls.OfType<MasterPage>().FirstOrDefault();
-            HtmlForm form = mp?.Controls.OfType<HtmlForm>().FirstOrDefault();
-            if (form != null)
-            {
-                var json = GetJsonData();
-                form.Attributes.Add("x-data", json);
-            }
-
-            base.CreateChildControls();
-        }
+        // protected override void CreateChildControls()
+        // {
+        //     // find our root form control and add the Alpine x-data attribute to it.
+        //     MasterPage mp = this.Controls.OfType<MasterPage>().FirstOrDefault();
+        //     HtmlForm form = mp?.Controls.OfType<HtmlForm>().FirstOrDefault();
+        //     if (form != null)
+        //     {
+        //         var json = GetJsonData();
+        //         form.Attributes.Add("x-data", json);
+        //     }
+        //
+        //     base.CreateChildControls();
+        // }
     }
 }
