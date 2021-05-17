@@ -140,6 +140,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ModelFormValueProvider.cs" />
     <Compile Include="Controls\DataContext.cs" />
     <Compile Include="Controls\PageWithModel.cs">
       <SubType>ASPXCodeBehind</SubType>

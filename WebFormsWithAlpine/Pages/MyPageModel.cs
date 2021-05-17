@@ -1,4 +1,6 @@
-﻿namespace WebFormsWithAlpine.Pages
+﻿using System;
+
+namespace WebFormsWithAlpine.Pages
 {
     public class MyPageModel
     {

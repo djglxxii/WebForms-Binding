@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Web.ModelBinding;
 using System.Web.UI;
-using Newtonsoft.Json;
 
 namespace WebFormsWithAlpine.Controls
 {
@@ -16,13 +17,24 @@ namespace WebFormsWithAlpine.Controls
             }
             else
             {
-                // formvalueprovider
+                TryUpdateModel();
             }
             
             DataBind();
         }
 
         protected abstract void LoadData();
+
+        protected virtual bool TryUpdateModel()
+        {
+            var provider = GetModelValueProvider();
+            return TryUpdateModel(Model, provider);
+        }
+
+        protected virtual IValueProvider GetModelValueProvider()
+        {
+            return new ModelFormValueProvider<T>(this);
+        }
         
         public virtual string GetData()
         {
