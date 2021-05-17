@@ -3,8 +3,33 @@
 <%@ Register TagPrefix="cc1" Namespace="WebFormsWithAlpine.Controls" Assembly="WebFormsWithAlpine" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <cc1:DataContext runat="server"
-                     GetDataMethod="SomeOtherMethod">
-        <h1>Hello World</h1>
+    <cc1:DataContext runat="server">
+
+        <div>
+            <cc1:CustomTextInput
+                runat="server"
+                ID="Firstname"
+                Value="<%#: Model.Firstname %>" />
+        </div>
+
+        <div>
+            <cc1:CustomTextInput
+                runat="server"
+                ID="Lastname"
+                Value="<%#: Model.Lastname %>" />
+        </div>
+
+        <div>
+            <cc1:CustomTextInput
+                runat="server"
+                ID="Zipcode"
+                Value="<%#: Model.Zipcode %>" />
+        </div>
+
     </cc1:DataContext>
+    
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+
 </asp:Content>
