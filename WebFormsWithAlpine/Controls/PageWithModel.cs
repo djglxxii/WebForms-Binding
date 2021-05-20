@@ -1,7 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Web.ModelBinding;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 namespace WebFormsWithAlpine.Controls
 {
@@ -40,6 +43,13 @@ namespace WebFormsWithAlpine.Controls
         {
             var json = JsonConvert.SerializeObject(Model);
             return json;
+        }
+        
+        public override void RenderControl(HtmlTextWriter writer)
+        {
+            HtmlForm form = this.Page.Form;
+            form.Attributes.Add("x-data", GetData());
+            base.RenderControl(writer);
         }
     }
 }
