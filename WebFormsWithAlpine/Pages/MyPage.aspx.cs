@@ -1,4 +1,5 @@
 ﻿using WebFormsWithAlpine.Controls;
+using WebFormsWithAlpine.Extensions;
 
 namespace WebFormsWithAlpine.Pages
 {
@@ -11,6 +12,8 @@ namespace WebFormsWithAlpine.Pages
             Model.Lastname = "Gardner";
             Model.Zipcode = 22963;
             Model.IsMale = true;
+            
+            
         }
     }
 }

@@ -4,10 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <cc1:CustomTextInput
-            runat="server"
-            ID="Firstname"
-            Value="<%#: Model.Firstname %>"/>
+        <%
+            TextInputFor()
+        %>
     </div>
 
     <div>
