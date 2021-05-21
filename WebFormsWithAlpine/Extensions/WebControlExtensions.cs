@@ -6,20 +6,19 @@ using WebFormsWithAlpine.Controls;
 
 namespace WebFormsWithAlpine.Extensions
 {
-    internal static class WebControlExtensions
+    public static class WebControlExtensions
     {
         public static HtmlControlBuilder TextInputFor<T>(this PageWithModel<T> page, 
-            Expression<Func<T, object>> expr,
-            HtmlControlType type) where T : class, new()
+            Expression<Func<T, object>> expr) where T : class, new()
         {
             var expression = (MemberExpression) expr.Body;
             string propName = expression.Member.Name;
 
-            return new HtmlControlBuilder(page, type, propName);
+            return new HtmlControlBuilder(page, HtmlControlType.TextInput, propName);
         }
     }
 
-    internal class HtmlControlBuilder
+    public class HtmlControlBuilder
     {
         private readonly HtmlControlType _type;
         private readonly string _propertyName;
@@ -56,7 +55,7 @@ namespace WebFormsWithAlpine.Extensions
         }
     }
 
-    internal enum HtmlControlType
+    public enum HtmlControlType
     {
         TextInput,
         NumericInput,

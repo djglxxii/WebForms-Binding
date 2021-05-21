@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyPage.aspx.cs" Inherits="WebFormsWithAlpine.Pages.MyPage" %>
+<%@ Import Namespace="WebFormsWithAlpine.Extensions" %>
 
 <%@ Register TagPrefix="cc1" Namespace="WebFormsWithAlpine.Controls" Assembly="WebFormsWithAlpine" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <%= TextInputFor(m => m.Firstname).Build() %> 
+        <%= this.TextInputFor(m => m.Firstname) %>
     </div>
 
     <div>
