@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <%= this.TextInputFor(m => m.Firstname) %>
+        <%= this.TextInputFor(m => m.Firstname).Build() %>
     </div>
 
     <div>

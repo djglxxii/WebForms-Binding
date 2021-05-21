@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq.Expressions;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -20,16 +21,18 @@ namespace WebFormsWithAlpine.Extensions
 
     public class HtmlControlBuilder
     {
+        private readonly Page _page;
         private readonly HtmlControlType _type;
         private readonly string _propertyName;
 
         public HtmlControlBuilder(Page page, HtmlControlType type, string propertyName)
         {
+            _page = page;
             _type = type;
             _propertyName = propertyName;
         }
 
-        public HtmlControl Build()
+        public string Build()
         {
             HtmlControl wc;
 
@@ -51,7 +54,11 @@ namespace WebFormsWithAlpine.Extensions
                     throw new ArgumentException();
             }
 
-            return wc;
+            var tr = new StringWriter();
+            var writer = new HtmlTextWriter(tr); 
+            wc.RenderControl(writer);
+
+            return tr.ToString();
         }
     }
 
