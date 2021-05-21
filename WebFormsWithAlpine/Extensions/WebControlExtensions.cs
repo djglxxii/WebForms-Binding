@@ -2,14 +2,15 @@
 using System.Linq.Expressions;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using WebFormsWithAlpine.Controls;
 
 namespace WebFormsWithAlpine.Extensions
 {
     internal static class WebControlExtensions
     {
-        public static HtmlControlBuilder TextInputFor<T>(this Page page, 
+        public static HtmlControlBuilder TextInputFor<T>(this PageWithModel<T> page, 
             Expression<Func<T, object>> expr,
-            HtmlControlType type)
+            HtmlControlType type) where T : class, new()
         {
             var expression = (MemberExpression) expr.Body;
             string propName = expression.Member.Name;
