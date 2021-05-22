@@ -23,6 +23,7 @@
         <%= this.SelectFor(m => m.Gender)
                 .WithClass("my-select")
                 .WithOptions(("0", "Male"),("1","Female"), ("2", "Unknown"))
+                .WithOption(("3", "something"), false)
                 .Build()%>
     </div>
     <div>

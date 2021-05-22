@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json.Linq;
 
 namespace WebFormsWithAlpine.Extensions
 {
@@ -14,7 +15,7 @@ namespace WebFormsWithAlpine.Extensions
         private readonly string _propertyName;
         private readonly List<string> _classes = new List<string>();
 
-        private ListItem[] _options;
+        private HashSet<ListItem> _options = new HashSet<ListItem>();
 
         public HtmlControlBuilder(Page page, HtmlControlType type, string propertyName)
         {
@@ -28,11 +29,29 @@ namespace WebFormsWithAlpine.Extensions
             return this;
         }
 
-        public HtmlControlBuilder WithOptions(params (object, string)[] options)
+        public HtmlControlBuilder WithOptions(params (string, string)[] options)
         {
-            _options = options
-                .Select(opt => new ListItem { Value = opt.Item1.ToString(), Text = opt.Item2 })
-                .ToArray();
+            foreach (var option in options)
+            {
+                var li = new ListItem();
+                li.Enabled = true;
+                li.Value = option.Item1;
+                li.Text = option.Item2;
+
+                _options.Add(li);
+            }
+            return this;
+        }
+
+        public HtmlControlBuilder WithOption((string, string) option, bool isEnabled)
+        {
+            var li = new ListItem();
+            li.Enabled = isEnabled;
+            li.Value = option.Item1;
+            li.Text = option.Item2;
+
+            _options.Add(li);
+
             return this;
         }
 
@@ -56,7 +75,7 @@ namespace WebFormsWithAlpine.Extensions
                     var select = new HtmlSelect();
                     select.ID = _propertyName;
                     select.Attributes.Add("x-model", _propertyName);
-                    select.Items.AddRange(_options);
+                    select.Items.AddRange(_options.ToArray());
                     wc = select;
                     break;
                 default:
