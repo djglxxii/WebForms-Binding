@@ -13,23 +13,5 @@ namespace WebFormsWithAlpine.Pages
 
     public partial class MyPage
     {
-
-        /// <summary>
-        /// Lastname control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebFormsWithAlpine.Controls.CustomTextInput Lastname;
-
-        /// <summary>
-        /// Zipcode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebFormsWithAlpine.Controls.CustomTextInput Zipcode;
     }
 }
