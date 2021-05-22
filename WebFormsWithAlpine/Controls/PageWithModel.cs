@@ -1,20 +1,17 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using Newtonsoft.Json.Serialization;
 using WebFormsWithAlpine.Extensions;
 using IValueProvider = System.Web.ModelBinding.IValueProvider;
 
 namespace WebFormsWithAlpine.Controls
 {
-    public abstract class PageWithModel<T> : Page where T : class, new()
+    public abstract class PageWithModel<TModel> : Page where TModel : class, new()
     {
-        public T Model { get; set; } = new T();
+        public TModel Model { get; set; } = new TModel();
 
         protected virtual void Page_Load(object sender, EventArgs e)
         {
@@ -38,7 +35,7 @@ namespace WebFormsWithAlpine.Controls
 
         protected virtual IValueProvider GetModelValueProvider()
         {
-            return new ModelFormValueProvider<T>(this);
+            return new ModelFormValueProvider<TModel>(this);
         }
 
         public virtual string GetData()

@@ -9,22 +9,22 @@ namespace WebFormsWithAlpine.Extensions
 {
     public static class PageExtensions
     {
-        public static HtmlControlBuilder TextInputFor<T>(this PageWithModel<T> page, 
-            Expression<Func<T, string>> expr) where T : class, new()
+        public static HtmlControlBuilder TextInputFor<TModel>(this PageWithModel<TModel> page, 
+            Expression<Func<TModel, string>> expr) where TModel : class, new()
         {
-            var expression = (MemberExpression) expr.Body;
-            string propName = expression.Member.Name;
-
-            return new HtmlControlBuilder(page, HtmlControlType.TextInput, propName);
+            return new HtmlControlBuilder(page, HtmlControlType.TextInput, GetPropertyName(expr));
         }
 
-        public static HtmlControlBuilder NumberInputFor<T>(this PageWithModel<T> page,
-            Expression<Func<T, int>> expr) where T : class, new()
+        public static HtmlControlBuilder NumberInputFor<TModel>(this PageWithModel<TModel> page,
+            Expression<Func<TModel, int>> expr) where TModel : class, new()
         {
-            var expression = (MemberExpression)expr.Body;
-            string propName = expression.Member.Name;
+            return new HtmlControlBuilder(page, HtmlControlType.NumericInput, GetPropertyName(expr));
+        }
 
-            return new HtmlControlBuilder(page, HtmlControlType.NumericInput, propName);
+        public static HtmlControlBuilder SelectFor<TModel>(this PageWithModel<TModel> page,
+            Expression<Func<TModel, string>> expr) where TModel : class, new()
+        {
+            return new HtmlControlBuilder(page, HtmlControlType.Select, GetPropertyName(expr));
         }
 
         public static string GetUniquePrefix(this Page page)
@@ -39,6 +39,13 @@ namespace WebFormsWithAlpine.Extensions
 
             var cph = cphs.Single();
             return cph.UniqueID + page.IdSeparator;
+        }
+
+        private static string GetPropertyName<TModel, TProperty>(Expression<Func<TModel, TProperty>> expr)
+        {
+            var expression = (MemberExpression)expr.Body;
+            string propName = expression.Member.Name;
+            return propName;
         }
     }
 

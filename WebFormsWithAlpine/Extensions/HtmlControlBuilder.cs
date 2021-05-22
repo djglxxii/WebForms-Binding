@@ -10,16 +10,13 @@ namespace WebFormsWithAlpine.Extensions
 {
     public class HtmlControlBuilder
     {
-        private readonly Page _page;
         private readonly HtmlControlType _type;
         private readonly string _propertyName;
         private readonly List<string> _classes = new List<string>();
 
         public HtmlControlBuilder(Page page, HtmlControlType type, string propertyName)
         {
-            _page = page;
             _type = type;
-
             _propertyName = $"{page.GetUniquePrefix()}{propertyName}";
         }
 
