@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using Newtonsoft.Json.Linq;
 
 namespace WebFormsWithAlpine.Extensions
 {
