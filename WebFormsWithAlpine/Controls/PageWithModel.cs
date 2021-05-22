@@ -1,8 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Web.ModelBinding;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using Newtonsoft.Json.Serialization;
+using WebFormsWithAlpine.Extensions;
+using IValueProvider = System.Web.ModelBinding.IValueProvider;
 
 namespace WebFormsWithAlpine.Controls
 {
@@ -34,18 +40,37 @@ namespace WebFormsWithAlpine.Controls
         {
             return new ModelFormValueProvider<T>(this);
         }
-        
+
         public virtual string GetData()
         {
-            var json = JsonConvert.SerializeObject(Model);
+            var settings = new JsonSerializerSettings();
+            settings.ContractResolver = new PageContractResolver(this);
+            var json = JsonConvert.SerializeObject(Model, settings);
             return json;
         }
-        
+
         public override void RenderControl(HtmlTextWriter writer)
         {
             HtmlForm form = this.Page.Form;
             form.Attributes.Add("x-data", GetData());
             base.RenderControl(writer);
+        }
+    }
+
+    public class PageContractResolver : DefaultContractResolver
+    {
+        private readonly string _uniquePrefix;
+
+        public PageContractResolver(Page page)
+        {
+            _uniquePrefix = page.GetUniquePrefix();
+        }
+
+        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+        {
+            var prop = base.CreateProperty(member, memberSerialization);
+            prop.PropertyName = _uniquePrefix + prop.PropertyName;
+            return prop;
         }
     }
 }

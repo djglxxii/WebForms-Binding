@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 namespace WebFormsWithAlpine.Extensions
 {
@@ -18,7 +19,8 @@ namespace WebFormsWithAlpine.Extensions
         {
             _page = page;
             _type = type;
-            _propertyName = propertyName;
+
+            _propertyName = $"{page.GetUniquePrefix()}{propertyName}";
         }
 
         public HtmlControlBuilder WithClass(string cssClass)

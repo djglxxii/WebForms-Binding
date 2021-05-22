@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using WebFormsWithAlpine.Controls;
 
 namespace WebFormsWithAlpine.Extensions
@@ -22,6 +25,20 @@ namespace WebFormsWithAlpine.Extensions
             string propName = expression.Member.Name;
 
             return new HtmlControlBuilder(page, HtmlControlType.NumericInput, propName);
+        }
+
+        public static string GetUniquePrefix(this Page page)
+        {
+            var cphs = page.Form.Controls.OfType<ContentPlaceHolder>().ToList();
+            if (cphs.Count > 1)
+            {
+                // TODO add support to target a specific ContentPlaceHolder.
+                throw new InvalidOperationException(
+                    "Pages with multiple ContentPlaceHolder controls is currently not supported.");
+            }
+
+            var cph = cphs.Single();
+            return cph.UniqueID + page.IdSeparator;
         }
     }
 
