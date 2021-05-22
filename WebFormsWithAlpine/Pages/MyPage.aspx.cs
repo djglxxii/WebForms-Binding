@@ -1,5 +1,4 @@
 ﻿using WebFormsWithAlpine.Controls;
-using WebFormsWithAlpine.Extensions;
 
 namespace WebFormsWithAlpine.Pages
 {
@@ -11,9 +10,7 @@ namespace WebFormsWithAlpine.Pages
             Model.Firstname = "David";
             Model.Lastname = "Gardner";
             Model.Zipcode = 22963;
-            Model.IsMale = true;
-            
-            
+            Model.Gender = "0";
         }
     }
 }

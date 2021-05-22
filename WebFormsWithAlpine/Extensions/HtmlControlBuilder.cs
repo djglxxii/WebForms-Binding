@@ -14,6 +14,8 @@ namespace WebFormsWithAlpine.Extensions
         private readonly string _propertyName;
         private readonly List<string> _classes = new List<string>();
 
+        private ListItem[] _options;
+
         public HtmlControlBuilder(Page page, HtmlControlType type, string propertyName)
         {
             _type = type;
@@ -25,7 +27,15 @@ namespace WebFormsWithAlpine.Extensions
             _classes.Add(cssClass);
             return this;
         }
-        
+
+        public HtmlControlBuilder WithOptions(params (object, string)[] options)
+        {
+            _options = options
+                .Select(opt => new ListItem { Value = opt.Item1.ToString(), Text = opt.Item2 })
+                .ToArray();
+            return this;
+        }
+
         public string Build()
         {
             HtmlControl wc;
@@ -43,9 +53,11 @@ namespace WebFormsWithAlpine.Extensions
                     wc.ID = _propertyName;
                     break;
                 case HtmlControlType.Select:
-                    wc = new HtmlSelect();
-                    wc.ID = _propertyName;
-                    wc.Attributes.Add("x-model", _propertyName);
+                    var select = new HtmlSelect();
+                    select.ID = _propertyName;
+                    select.Attributes.Add("x-model", _propertyName);
+                    select.Items.AddRange(_options);
+                    wc = select;
                     break;
                 default:
                     throw new ArgumentException();
@@ -55,9 +67,9 @@ namespace WebFormsWithAlpine.Extensions
             {
                 wc.Attributes.Add("class", String.Join(" ", _classes));
             }
-            
+
             var tr = new StringWriter();
-            var writer = new HtmlTextWriter(tr); 
+            var writer = new HtmlTextWriter(tr);
             wc.RenderControl(writer);
 
             return tr.ToString();

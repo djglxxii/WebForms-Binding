@@ -7,6 +7,6 @@ namespace WebFormsWithAlpine.Pages
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public int Zipcode { get; set; }
-        public bool IsMale { get; set; }
+        public string Gender { get; set; }
     }
 }
