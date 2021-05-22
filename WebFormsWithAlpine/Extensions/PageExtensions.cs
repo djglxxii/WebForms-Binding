@@ -1,14 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Linq.Expressions;
-using System.Runtime.InteropServices;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using WebFormsWithAlpine.Controls;
 
 namespace WebFormsWithAlpine.Extensions
 {
-    public static class WebControlExtensions
+    public static class PageExtensions
     {
         public static HtmlControlBuilder TextInputFor<T>(this PageWithModel<T> page, 
             Expression<Func<T, string>> expr) where T : class, new()

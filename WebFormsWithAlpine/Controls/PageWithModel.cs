@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Linq;
 using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 
 namespace WebFormsWithAlpine.Controls
 {
@@ -22,8 +20,6 @@ namespace WebFormsWithAlpine.Controls
             {
                 TryUpdateModel();
             }
-            
-            DataBind();
         }
 
         protected abstract void LoadData();
