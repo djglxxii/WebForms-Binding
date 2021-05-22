@@ -5,8 +5,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-
-using WebFormsWithAlpine.UI.Extensions;
+using WebFormsWithAlpine.UI.Controls;
 
 namespace WebFormsWithAlpine.UI
 {
@@ -39,9 +38,9 @@ namespace WebFormsWithAlpine.UI
     {
         protected string PropertyName;
 
-        protected HtmlInputControlBuilder(Page page, string propertyName)
+        protected HtmlInputControlBuilder(IHaveModel control, string propertyName)
         {
-            this.PropertyName = page.GetUniquePrefix() + propertyName;
+            this.PropertyName = control.GetUniquePrefix() + propertyName;
         }
 
         public override string Build()
@@ -54,8 +53,8 @@ namespace WebFormsWithAlpine.UI
 
     public class HtmlTextInputBuilder : HtmlInputControlBuilder
     {
-        public HtmlTextInputBuilder(Page page, string propertyName)
-            : base(page, propertyName)
+        public HtmlTextInputBuilder(IHaveModel control, string propertyName)
+            : base(control, propertyName)
         {
             this.BuiltControl = new HtmlInputText("text");
         }
@@ -63,7 +62,7 @@ namespace WebFormsWithAlpine.UI
 
     public class HtmlNumberInputBuilder : HtmlInputControlBuilder
     {
-        public HtmlNumberInputBuilder(Page page, string propertyName)
+        public HtmlNumberInputBuilder(IHaveModel page, string propertyName)
             : base(page, propertyName)
         {
             this.BuiltControl = new HtmlInputText("number");
@@ -72,7 +71,7 @@ namespace WebFormsWithAlpine.UI
 
     public class HtmlSelectBuilder : HtmlInputControlBuilder
     {
-        public HtmlSelectBuilder(Page page, string propertyName)
+        public HtmlSelectBuilder(IHaveModel page, string propertyName)
             : base(page, propertyName)
         {
             this.BuiltControl = new HtmlSelect();

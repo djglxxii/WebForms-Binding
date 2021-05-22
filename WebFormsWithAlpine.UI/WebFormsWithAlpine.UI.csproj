@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\IHaveModel.cs" />
     <Compile Include="Controls\ModelFormValueProvider.cs" />
     <Compile Include="Controls\PageContractResolver.cs" />
     <Compile Include="Controls\PageWithModel.cs">
@@ -54,7 +55,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Extensions\BuilderHelpers.cs" />
-    <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="HtmlControlBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

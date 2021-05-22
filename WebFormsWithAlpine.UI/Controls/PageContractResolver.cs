@@ -1,8 +1,6 @@
-﻿using System.Reflection;
-using System.Web.UI;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using WebFormsWithAlpine.UI.Extensions;
+using System.Reflection;
 
 namespace WebFormsWithAlpine.UI.Controls
 {
@@ -10,14 +8,9 @@ namespace WebFormsWithAlpine.UI.Controls
     {
         private readonly string _uniquePrefix;
 
-        public PageContractResolver(Page page)
+        public PageContractResolver(string uniquePrefix)
         {
-            _uniquePrefix = page.GetUniquePrefix();
-        }
-
-        public PageContractResolver(UserControl uc)
-        {
-            _uniquePrefix = uc.GetUniquePrefix();
+            _uniquePrefix = uniquePrefix;
         }
 
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)

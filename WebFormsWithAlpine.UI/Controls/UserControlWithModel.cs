@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace WebFormsWithAlpine.UI.Controls
 {
-    public abstract class UserControlWithModel<TModel> : UserControl where TModel : class, new()
+    public abstract class UserControlWithModel<TModel> : UserControl, IHaveModel where TModel : class, new()
     {
         public TModel Model { get; protected set; } = new TModel();
 
@@ -38,9 +38,14 @@ namespace WebFormsWithAlpine.UI.Controls
         public virtual string GetData()
         {
             var settings = new JsonSerializerSettings();
-            settings.ContractResolver = new PageContractResolver(this);
+            settings.ContractResolver = new PageContractResolver(this.GetUniquePrefix());
             var json = JsonConvert.SerializeObject(Model, settings);
             return json;
+        }
+
+        public string GetUniquePrefix()
+        {
+            return this.ID + Page.IdSeparator;
         }
 
         public override void RenderControl(HtmlTextWriter writer)

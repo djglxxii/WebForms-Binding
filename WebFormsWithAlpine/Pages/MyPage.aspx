@@ -12,7 +12,7 @@
     </div>
 
     <div>
-        <%= this.SelectFor(m => m.Gender).WithOptions().WithCssClass("my-select-class").Build()  %>
+        <%= this.SelectFor(m => m.Gender).WithOptions(("0", "Male"), ("1","Female"),("3","Other")).WithCssClass("my-select-class").Build()  %>
     </div>
 
     <div>
