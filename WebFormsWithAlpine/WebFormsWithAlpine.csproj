@@ -140,12 +140,6 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CustomTextInput.cs" />
-    <Compile Include="Controls\ModelFormValueProvider.cs" />
-    <Compile Include="Controls\DataContext.cs" />
-    <Compile Include="Controls\PageWithModel.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,7 +147,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\HtmlControlBuilder.cs" />
     <Compile Include="Extensions\PageExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,6 +194,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebFormsWithAlpine.UI\WebFormsWithAlpine.UI.csproj">
+      <Project>{b7505077-7100-4e11-be6c-9cbc7ea3ee11}</Project>
+      <Name>WebFormsWithAlpine.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

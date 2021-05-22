@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Web.ModelBinding;
-using WebFormsWithAlpine.Extensions;
+using WebFormsWithAlpine.UI.Extensions;
 
-namespace WebFormsWithAlpine.Controls
+namespace WebFormsWithAlpine.UI.Controls
 {
     public class ModelFormValueProvider<T> : IValueProvider where T : class, new()
     {

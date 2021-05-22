@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+
 using WebFormsWithAlpine.UI.Extensions;
 
 namespace WebFormsWithAlpine.UI
@@ -23,7 +24,7 @@ namespace WebFormsWithAlpine.UI
             }
             return this;
         }
-       
+
         public virtual string Build()
         {
             var tr = new StringWriter();
@@ -36,31 +37,25 @@ namespace WebFormsWithAlpine.UI
 
     public abstract class HtmlInputControlBuilder : HtmlControlBuilder
     {
-        protected readonly Page Page;
         protected string PropertyName;
 
-        protected HtmlInputControlBuilder(Page page)
+        protected HtmlInputControlBuilder(Page page, string propertyName)
         {
-            this.Page = page;
+            this.PropertyName = page.GetUniquePrefix() + propertyName;
         }
 
-        protected HtmlControlBuilder WithProperty(string propertyName)
+        public override string Build()
         {
-            this.PropertyName = propertyName;
-            return this;
-        }
-
-        public override string ToString()
-        {
-            BuiltControl.ID = $"{Page.GetUniquePrefix()}{this.PropertyName}";
-            return base.ToString();
+            this.BuiltControl.Attributes.Add("x-model", PropertyName);
+            this.BuiltControl.ID = PropertyName;
+            return base.Build();
         }
     }
 
     public class HtmlTextInputBuilder : HtmlInputControlBuilder
     {
-        public HtmlTextInputBuilder(Page page)
-            : base(page)
+        public HtmlTextInputBuilder(Page page, string propertyName)
+            : base(page, propertyName)
         {
             this.BuiltControl = new HtmlInputText("text");
         }
@@ -68,7 +63,8 @@ namespace WebFormsWithAlpine.UI
 
     public class HtmlNumberInputBuilder : HtmlInputControlBuilder
     {
-        public HtmlNumberInputBuilder(Page page) : base(page)
+        public HtmlNumberInputBuilder(Page page, string propertyName)
+            : base(page, propertyName)
         {
             this.BuiltControl = new HtmlInputText("number");
         }
@@ -76,8 +72,8 @@ namespace WebFormsWithAlpine.UI
 
     public class HtmlSelectBuilder : HtmlInputControlBuilder
     {
-        public HtmlSelectBuilder(Page page) 
-            : base(page)
+        public HtmlSelectBuilder(Page page, string propertyName)
+            : base(page, propertyName)
         {
             this.BuiltControl = new HtmlSelect();
         }

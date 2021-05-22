@@ -1,13 +1,15 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+
 using System;
 using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using WebFormsWithAlpine.Extensions;
+
+using WebFormsWithAlpine.UI.Extensions;
 using IValueProvider = System.Web.ModelBinding.IValueProvider;
 
-namespace WebFormsWithAlpine.Controls
+namespace WebFormsWithAlpine.UI.Controls
 {
     public abstract class PageWithModel<TModel> : Page where TModel : class, new()
     {

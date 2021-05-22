@@ -1,4 +1,4 @@
-﻿using WebFormsWithAlpine.Controls;
+﻿using WebFormsWithAlpine.UI.Controls;
 
 namespace WebFormsWithAlpine.Pages
 {

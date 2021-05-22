@@ -1,30 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyPage.aspx.cs" Inherits="WebFormsWithAlpine.Pages.MyPage" %>
 
-<%@ Import Namespace="WebFormsWithAlpine.Extensions" %>
+<%@ Import Namespace="WebFormsWithAlpine.UI.Extensions" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <%= 
-            this.TextInputFor(m => m.Firstname)
-                .WithClass("my-class-1").WithClass("my-class-2")
-                .Build() 
-        %>
+        <%= this.TextInputFor(m => m.Firstname).WithCssClass("my-class").Build() %>
     </div>
 
     <div>
-        <%= this.TextInputFor(m => m.Lastname).Build() %>
+        <%= this.TextInputFor(m => m.Lastname).WithCssClass("my-class").Build() %>
     </div>
 
     <div>
-        <%= this.NumberInputFor(m => m.Zipcode).Build() %>
+        <%= this.SelectFor(m => m.Gender).WithOptions().WithCssClass("my-select-class").Build()  %>
     </div>
 
     <div>
-        <%= this.SelectFor(m => m.Gender)
-                .WithClass("my-select")
-                .WithOptions(("0", "Male"),("1","Female"), ("2", "Unknown"))
-                .WithOption(("3", "something"), false)
-                .Build()%>
     </div>
     <div>
         <button type="submit">Submit</button>
