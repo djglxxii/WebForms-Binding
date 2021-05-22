@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WebFormsWithAlpine.UI.Extensions
 {
-    internal static class PageExtensions
+    internal static class ControlExtensions
     {
         public static string GetUniquePrefix(this Page page)
         {
@@ -20,6 +19,11 @@ namespace WebFormsWithAlpine.UI.Extensions
 
             var cph = phs.Single();
             return cph.UniqueID + page.IdSeparator;
+        }
+
+        public static string GetUniquePrefix(this UserControl uc)
+        {
+            return uc.UniqueID + uc.Page.IdSeparator;
         }
     }
 }

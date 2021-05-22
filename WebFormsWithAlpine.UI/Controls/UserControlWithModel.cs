@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using IValueProvider = System.Web.ModelBinding.IValueProvider;
+using Newtonsoft.Json;
 
 namespace WebFormsWithAlpine.UI.Controls
 {
-    public abstract class PageWithModel<TModel> : Page where TModel : class, new()
+    public abstract class UserControlWithModel<TModel> : UserControl where TModel : class, new()
     {
         public TModel Model { get; protected set; } = new TModel();
 

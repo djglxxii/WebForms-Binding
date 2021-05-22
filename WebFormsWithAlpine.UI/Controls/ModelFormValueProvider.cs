@@ -15,6 +15,12 @@ namespace WebFormsWithAlpine.UI.Controls
             _context = page.ModelBindingExecutionContext;
             _uniquePrefix = page.GetUniquePrefix();
         }
+
+        public ModelFormValueProvider(UserControlWithModel<T> uc)
+        {
+            _context = uc.Page.ModelBindingExecutionContext;
+            _uniquePrefix = uc.GetUniquePrefix();
+        }
         
         public bool ContainsPrefix(string prefix)
         {
