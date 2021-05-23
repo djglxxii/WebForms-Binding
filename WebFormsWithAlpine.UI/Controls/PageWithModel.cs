@@ -8,7 +8,7 @@ using IValueProvider = System.Web.ModelBinding.IValueProvider;
 
 namespace WebFormsWithAlpine.UI.Controls
 {
-    public abstract class PageWithModel<TModel> : Page, IHaveModel where TModel : class, new()
+    public abstract class PageWithModel<TModel> : Page, IHaveModel<TModel> where TModel : class, new()
     {
         public TModel Model { get; protected set; } = new TModel();
 

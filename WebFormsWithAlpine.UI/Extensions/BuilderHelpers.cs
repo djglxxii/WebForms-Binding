@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Linq.Expressions;
+using WebFormsWithAlpine.UI.Builders;
 using WebFormsWithAlpine.UI.Controls;
 
 namespace WebFormsWithAlpine.UI.Extensions
 {
     public static class BuilderHelpers
     {
-        public static HtmlTextInputBuilder TextInputFor<TModel>(this PageWithModel<TModel> page,
+        public static HtmlTextInputBuilder TextInputFor<TModel>(this IHaveModel<TModel> page,
             Expression<Func<TModel, string>> expr) where TModel : class, new()
         {
             return new HtmlTextInputBuilder(page, GetPropertyName(expr));
         }
 
-        public static HtmlNumberInputBuilder NumberInputFor<TModel>(this PageWithModel<TModel> page,
+        public static HtmlNumberInputBuilder NumberInputFor<TModel>(this IHaveModel<TModel> page,
             Expression<Func<TModel, int>> expr) where TModel : class, new()
         {
             return new HtmlNumberInputBuilder(page, GetPropertyName(expr));
         }
 
-        public static HtmlSelectBuilder SelectFor<TModel>(this PageWithModel<TModel> page,
+        public static HtmlSelectBuilder SelectFor<TModel>(this IHaveModel<TModel> page,
             Expression<Func<TModel, string>> expr) where TModel : class, new()
         {
             return new HtmlSelectBuilder(page, GetPropertyName(expr));

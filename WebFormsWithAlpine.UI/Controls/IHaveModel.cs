@@ -1,7 +1,7 @@
 ﻿namespace WebFormsWithAlpine.UI.Controls
 {
-    public interface IHaveModel
+    public interface IHaveModel<TModel> : IHaveUniquePrefix where TModel : class, new()
     {
-        string GetUniquePrefix();
+        TModel Model { get; }
     }
 }

@@ -45,7 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\HtmlInputControlBuilder.cs" />
+    <Compile Include="Builders\HtmlNumberInputBuilder.cs" />
+    <Compile Include="Builders\HtmlSelectBuilder.cs" />
+    <Compile Include="Builders\HtmlTextInputBuilder.cs" />
     <Compile Include="Controls\IHaveModel.cs" />
+    <Compile Include="Controls\IHaveUniquePrefix.cs" />
     <Compile Include="Controls\ModelFormValueProvider.cs" />
     <Compile Include="Controls\PageContractResolver.cs" />
     <Compile Include="Controls\PageWithModel.cs">
@@ -55,11 +60,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Extensions\BuilderHelpers.cs" />
-    <Compile Include="HtmlControlBuilder.cs" />
+    <Compile Include="Extensions\ControlExtensions.cs" />
+    <Compile Include="Builders\HtmlControlBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
