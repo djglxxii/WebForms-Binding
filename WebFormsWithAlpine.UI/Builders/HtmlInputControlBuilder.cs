@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
@@ -13,6 +14,7 @@ namespace WebFormsWithAlpine.UI.Builders
         protected string PropertyName;
         protected string PrefixedPropertyName;
         protected bool IncludeValidation = false;
+        protected string ValidationCssClass = null;
 
         protected HtmlInputControlBuilder(IModelControl control, string propertyName)
         {
@@ -21,9 +23,10 @@ namespace WebFormsWithAlpine.UI.Builders
             PrefixedPropertyName = control.GetUniquePrefix() + propertyName;
         }
 
-        public HtmlInputControlBuilder WithValidation()
+        public HtmlInputControlBuilder ShowValidation()
         {
             this.IncludeValidation = true;
+
             return this;
         }
         
@@ -41,6 +44,10 @@ namespace WebFormsWithAlpine.UI.Builders
             sb.Append(base.Build());
 
             var div = new HtmlGenericControl("div");
+            if (!String.IsNullOrEmpty(ValidationCssClass))
+            {
+                div.Attributes.Add("class", ValidationCssClass);
+            }
             div.InnerText = GetErrorMessage();
 
             var tr = new StringWriter();

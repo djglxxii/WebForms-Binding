@@ -13,7 +13,7 @@ namespace WebFormsWithAlpine.UI.Builders
 
         protected HtmlControl BuiltControl;
 
-        public HtmlControlBuilder WithCssClass(string cssClass)
+        public virtual HtmlControlBuilder WithCssClass(string cssClass)
         {
             if (_cssClasses.Any())
             {
