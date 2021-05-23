@@ -45,14 +45,15 @@ namespace WebFormsWithAlpine.UI.Controls
 
         public string GetUniquePrefix()
         {
-            return this.ID + Page.IdSeparator;
+            return this.UniqueID + Page.IdSeparator;
         }
 
         public override void RenderControl(HtmlTextWriter writer)
         {
-            HtmlForm form = this.Page.Form;
-            form.Attributes.Add("x-data", GetData());
+            writer.AddAttribute("x-data", GetData());
+            writer.RenderBeginTag("div");
             base.RenderControl(writer);
+            writer.RenderEndTag();
         }
     }
 }
