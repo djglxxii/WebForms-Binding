@@ -47,6 +47,11 @@ namespace WebFormsWithAlpine.UI.Controls
             return this.UniqueID + Page.IdSeparator;
         }
 
+        public ModelStateDictionary GetModelState()
+        {
+            return this.Page.ModelState;
+        }
+
         public override void RenderControl(HtmlTextWriter writer)
         {
             writer.AddAttribute("x-data", GetData());

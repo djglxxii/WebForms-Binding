@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Linq;
+using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -57,6 +58,11 @@ namespace WebFormsWithAlpine.UI.Controls
 
             var cph = phs.Single();
             return cph.UniqueID + this.IdSeparator;
+        }
+
+        public ModelStateDictionary GetModelState()
+        {
+            return this.ModelState;
         }
 
         public override void RenderControl(HtmlTextWriter writer)

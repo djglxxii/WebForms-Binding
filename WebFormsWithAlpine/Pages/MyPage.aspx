@@ -7,12 +7,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <%= this.TextInputFor(m => m.Firstname)
+                .WithValidation()
                 .WithCssClass("my-class")
                 .Build() %>
     </div>
 
     <div>
         <%= this.TextInputFor(m => m.Lastname)
+                .WithValidation()
                 .WithCssClass("my-class")
                 .Build() %>
     </div>

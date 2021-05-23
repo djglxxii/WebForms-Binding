@@ -50,7 +50,7 @@
     <Compile Include="Builders\HtmlSelectBuilder.cs" />
     <Compile Include="Builders\HtmlTextInputBuilder.cs" />
     <Compile Include="Controls\IHaveModel.cs" />
-    <Compile Include="Controls\IHaveUniquePrefix.cs" />
+    <Compile Include="Controls\IModelControl.cs" />
     <Compile Include="Controls\ModelFormValueProvider.cs" />
     <Compile Include="Controls\PageContractResolver.cs" />
     <Compile Include="Controls\PageWithModel.cs">

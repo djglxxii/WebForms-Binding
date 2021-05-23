@@ -5,7 +5,7 @@ namespace WebFormsWithAlpine.UI.Builders
 {
     public class HtmlNumberInputBuilder : HtmlInputControlBuilder
     {
-        public HtmlNumberInputBuilder(IHaveUniquePrefix control, string propertyName)
+        public HtmlNumberInputBuilder(IModelControl control, string propertyName)
             : base(control, propertyName)
         {
             this.BuiltControl = new HtmlInputText("number");

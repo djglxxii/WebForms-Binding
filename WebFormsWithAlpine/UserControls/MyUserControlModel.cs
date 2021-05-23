@@ -9,5 +9,7 @@ namespace WebFormsWithAlpine.UserControls
     {
         public string SomeInfo1 { get; set; }
         public string SomeInfo2 { get; set; }
+
+        public string Firstname { get; set; }
     }
 }

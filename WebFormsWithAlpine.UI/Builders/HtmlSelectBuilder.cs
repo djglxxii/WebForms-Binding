@@ -6,7 +6,7 @@ namespace WebFormsWithAlpine.UI.Builders
 {
     public class HtmlSelectBuilder : HtmlInputControlBuilder
     {
-        public HtmlSelectBuilder(IHaveUniquePrefix control, string propertyName)
+        public HtmlSelectBuilder(IModelControl control, string propertyName)
             : base(control, propertyName)
         {
             this.BuiltControl = new HtmlSelect();
