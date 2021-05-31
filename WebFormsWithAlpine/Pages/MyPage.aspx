@@ -26,6 +26,13 @@
                 .WithOption(("3", "something"), false)
                 .Build()%>
     </div>
+    
+    <div>
+        <aegis-validated-input message="Foo must bar!">
+            <input type="text" id="foo" name="foo"/>
+        </aegis-validated-input>
+    </div>
+    
     <div>
         <button type="submit">Submit</button>
     </div>

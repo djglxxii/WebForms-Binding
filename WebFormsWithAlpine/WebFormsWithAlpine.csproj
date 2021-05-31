@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -24,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -117,6 +119,60 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Pages\MyPage.aspx" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\aegis-web-components.esm.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\aegis-web-components.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\index.esm.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-11ba787a.system.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-3dfc5c37.entry.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-50ea2036.system.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-5314cb46.system.entry.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-596b2685.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-5e194958.system.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-7370fca6.system.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-9064d5bf.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-bfa85c71.system.entry.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-cd733818.system.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-cf642e56.entry.js" />
+    <Content Include="Scripts\web-components\dist\aegis-web-components\p-f3e5b584.js" />
+    <Content Include="Scripts\web-components\dist\cjs\aegis-validated-input.cjs.entry.js" />
+    <Content Include="Scripts\web-components\dist\cjs\aegis-web-components.cjs.js" />
+    <Content Include="Scripts\web-components\dist\cjs\dom-a5c06362.js" />
+    <Content Include="Scripts\web-components\dist\cjs\index-763fbae9.js" />
+    <Content Include="Scripts\web-components\dist\cjs\index.cjs.js" />
+    <Content Include="Scripts\web-components\dist\cjs\loader.cjs.js" />
+    <Content Include="Scripts\web-components\dist\cjs\my-component.cjs.entry.js" />
+    <Content Include="Scripts\web-components\dist\cjs\shadow-css-df0e336c.js" />
+    <Content Include="Scripts\web-components\dist\collection\components\my-component\my-component.css" />
+    <Content Include="Scripts\web-components\dist\collection\components\my-component\my-component.js" />
+    <Content Include="Scripts\web-components\dist\collection\components\validated-input\validated-input.css" />
+    <Content Include="Scripts\web-components\dist\collection\components\validated-input\validated-input.js" />
+    <Content Include="Scripts\web-components\dist\collection\index.js" />
+    <Content Include="Scripts\web-components\dist\collection\utils\utils.js" />
+    <Content Include="Scripts\web-components\dist\custom-elements\index.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\aegis-validated-input.entry.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\aegis-web-components.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\dom-bd0bf1dc.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\index-14ac85e4.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\index.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\loader.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\my-component.entry.js" />
+    <Content Include="Scripts\web-components\dist\esm-es5\shadow-css-10669ec3.js" />
+    <Content Include="Scripts\web-components\dist\esm\aegis-validated-input.entry.js" />
+    <Content Include="Scripts\web-components\dist\esm\aegis-web-components.js" />
+    <Content Include="Scripts\web-components\dist\esm\dom-bd0bf1dc.js" />
+    <Content Include="Scripts\web-components\dist\esm\index-14ac85e4.js" />
+    <Content Include="Scripts\web-components\dist\esm\index.js" />
+    <Content Include="Scripts\web-components\dist\esm\loader.js" />
+    <Content Include="Scripts\web-components\dist\esm\my-component.entry.js" />
+    <Content Include="Scripts\web-components\dist\esm\polyfills\core-js.js" />
+    <Content Include="Scripts\web-components\dist\esm\polyfills\css-shim.js" />
+    <Content Include="Scripts\web-components\dist\esm\polyfills\dom.js" />
+    <Content Include="Scripts\web-components\dist\esm\polyfills\es5-html-element.js" />
+    <Content Include="Scripts\web-components\dist\esm\polyfills\index.js" />
+    <Content Include="Scripts\web-components\dist\esm\polyfills\system.js" />
+    <Content Include="Scripts\web-components\dist\esm\shadow-css-10669ec3.js" />
+    <Content Include="Scripts\web-components\dist\index.cjs.js" />
+    <Content Include="Scripts\web-components\dist\index.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -191,10 +247,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Scripts\web-components\dist\collection\collection-manifest.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,11 +258,24 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\web-components\dist\custom-elements\index.d.ts" />
+    <TypeScriptCompile Include="Scripts\web-components\dist\types\components.d.ts" />
+    <TypeScriptCompile Include="Scripts\web-components\dist\types\components\my-component\my-component.d.ts" />
+    <TypeScriptCompile Include="Scripts\web-components\dist\types\components\validated-input\validated-input.d.ts" />
+    <TypeScriptCompile Include="Scripts\web-components\dist\types\index.d.ts" />
+    <TypeScriptCompile Include="Scripts\web-components\dist\types\stencil-public-runtime.d.ts" />
+    <TypeScriptCompile Include="Scripts\web-components\dist\types\utils\utils.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

@@ -13,10 +13,11 @@
 </head>
 <body>
     <form runat="server">
-
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         </asp:ContentPlaceHolder>
-
     </form>
+
+    <script type="module" src='<%= ResolveUrl("~/Scripts/web-components/dist/aegis-web-components/aegis-web-components.esm.js") %>'></script>
+    <script nomodule src='<%= ResolveUrl("~/Scripts/web-components/dist/aegis-web-components/aegis-web-components.js") %>'></script>
 </body>
 </html>
