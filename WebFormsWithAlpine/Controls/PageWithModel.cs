@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
-using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using WebFormsWithAlpine.Extensions;
 using IValueProvider = System.Web.ModelBinding.IValueProvider;
 
 namespace WebFormsWithAlpine.Controls
@@ -51,23 +48,6 @@ namespace WebFormsWithAlpine.Controls
             HtmlForm form = this.Page.Form;
             form.Attributes.Add("x-data", GetData());
             base.RenderControl(writer);
-        }
-    }
-
-    public class PageContractResolver : DefaultContractResolver
-    {
-        private readonly string _uniquePrefix;
-
-        public PageContractResolver(Page page)
-        {
-            _uniquePrefix = page.GetUniquePrefix();
-        }
-
-        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
-        {
-            var prop = base.CreateProperty(member, memberSerialization);
-            prop.PropertyName = _uniquePrefix + prop.PropertyName;
-            return prop;
         }
     }
 }

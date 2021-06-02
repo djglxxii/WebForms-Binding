@@ -199,6 +199,7 @@
     <Compile Include="Controls\CustomTextInput.cs" />
     <Compile Include="Controls\ModelFormValueProvider.cs" />
     <Compile Include="Controls\DataContext.cs" />
+    <Compile Include="Controls\PageContractResolver.cs" />
     <Compile Include="Controls\PageWithModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
