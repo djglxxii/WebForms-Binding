@@ -32,7 +32,7 @@ namespace WebFormsWithAlpine.Controls
 
         protected virtual IValueProvider GetModelValueProvider()
         {
-            return new ModelFormValueProvider<TModel>(this);
+            return new PageValueProvider<TModel>(this);
         }
 
         public virtual string GetData()

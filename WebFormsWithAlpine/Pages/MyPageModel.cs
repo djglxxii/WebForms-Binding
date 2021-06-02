@@ -5,19 +5,19 @@ namespace WebFormsWithAlpine.Pages
 {
     public class MyPageModel
     {
-        [RequiresUniqueIdPrefix]
+        [RequiresUniquePrefix]
         public string Firstname { get; set; }
 
-        [RequiresUniqueIdPrefix]
+        [RequiresUniquePrefix]
         public string Lastname { get; set; }
 
-        [RequiresUniqueIdPrefix]
+        [RequiresUniquePrefix]
         public int Zipcode { get; set; }
 
-        [RequiresUniqueIdPrefix]
+        [RequiresUniquePrefix]
         public string Gender { get; set; }
 
-        [RequiresUniqueIdPrefix]
+        [RequiresUniquePrefix]
         public List<(int, string)> GenderOptions = new List<(int, string)>();
     }
 }

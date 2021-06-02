@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Web.UI;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -21,7 +19,7 @@ namespace WebFormsWithAlpine.Controls
         {
             var prop = base.CreateProperty(member, memberSerialization);
 
-            var att = member.GetCustomAttribute<RequiresUniqueIdPrefix>();
+            var att = member.GetCustomAttribute<RequiresUniquePrefix>();
             if (att != null)
             {
                 prop.PropertyName = _uniquePrefix + prop.PropertyName;
@@ -29,13 +27,5 @@ namespace WebFormsWithAlpine.Controls
             
             return prop;
         }
-    }
-
-    /// <summary>
-    /// Marker attribute for json serialization process.
-    /// </summary>
-    public class RequiresUniqueIdPrefix : Attribute
-    {
-
     }
 }

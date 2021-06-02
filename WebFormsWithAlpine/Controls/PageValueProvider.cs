@@ -5,12 +5,12 @@ using WebFormsWithAlpine.Extensions;
 
 namespace WebFormsWithAlpine.Controls
 {
-    public class ModelFormValueProvider<T> : IValueProvider where T : class, new()
+    public class PageValueProvider<T> : IValueProvider where T : class, new()
     {
         private readonly ModelBindingExecutionContext _context;
         private readonly string _uniquePrefix;
 
-        public ModelFormValueProvider(PageWithModel<T> page)
+        public PageValueProvider(PageWithModel<T> page)
         {
             _context = page.ModelBindingExecutionContext;
             _uniquePrefix = page.GetUniquePrefix();
