@@ -54,7 +54,7 @@ namespace WebFormsWithAlpine.Extensions
             return this;
         }
 
-        public string Build()
+        public override string ToString()
         {
             HtmlControl wc;
 

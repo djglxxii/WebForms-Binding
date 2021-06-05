@@ -210,7 +210,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\HtmlControlBuilder.cs" />
-    <Compile Include="Extensions\PageExtensions.cs" />
+    <Compile Include="Extensions\PageWithModelExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

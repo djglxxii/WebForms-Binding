@@ -7,11 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebFormsWithAlpine.Pages
-{
-
-
-    public partial class MyPage
-    {
+namespace WebFormsWithAlpine.Pages {
+    
+    
+    public partial class MyPage {
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new WebFormsWithAlpine.SiteMaster Master {
+            get {
+                return ((WebFormsWithAlpine.SiteMaster)(base.Master));
+            }
+        }
     }
 }

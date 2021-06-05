@@ -7,7 +7,7 @@ using WebFormsWithAlpine.Controls;
 
 namespace WebFormsWithAlpine.Extensions
 {
-    public static class PageExtensions
+    public static class PageWithModelExtensions
     {
         public static HtmlControlBuilder TextInputFor<TModel>(this PageWithModel<TModel> page, 
             Expression<Func<TModel, string>> expr) where TModel : class, new()
