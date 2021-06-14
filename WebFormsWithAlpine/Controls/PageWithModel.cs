@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using Newtonsoft.Json.Serialization;
 using IValueProvider = System.Web.ModelBinding.IValueProvider;
 
 namespace WebFormsWithAlpine.Controls
@@ -37,10 +39,27 @@ namespace WebFormsWithAlpine.Controls
 
         public virtual string GetData()
         {
-            var settings = new JsonSerializerSettings();
-            settings.ContractResolver = new PageContractResolver(this);
-            var json = JsonConvert.SerializeObject(Model, settings);
-            return json;
+            using (var stringWriter = new StringWriter())
+            using (var jsonWriter = new JsonTextWriter(stringWriter))
+            {
+                var serializer = new JsonSerializer
+                {
+                    // DefaultContract ensures PascalCasing to match C# style.
+                    ContractResolver = new DefaultContractResolver()
+                };
+
+                // We don't want quotes around object names
+                jsonWriter.QuoteName = false;
+                serializer.Serialize(jsonWriter, Model);
+
+                var jsObject = stringWriter.ToString();
+
+                return jsObject;
+            }
+            //var settings = new JsonSerializerSettings();
+            //settings.ContractResolver = new PageContractResolver(this);
+            //var json = JsonConvert.SerializeObject(Model, settings);
+            //return json;
         }
 
         public override void RenderControl(HtmlTextWriter writer)
