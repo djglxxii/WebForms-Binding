@@ -6,12 +6,14 @@ export class EditableList {
     this.value = '';
   }
   componentDidLoad() {
+    const json = JSON.stringify(this.value);
+    console.log(json);
     if (this.inputEl === null) {
       const parentEl = this.el.parentElement;
       this.inputEl = parentEl.ownerDocument.createElement('input');
-      this.inputEl.type = 'hidden';
+      this.inputEl.type = 'text';
       this.inputEl.name = this.name;
-      this.inputEl.value = this.value;
+      this.inputEl.value = json;
       parentEl.append(this.inputEl);
     }
   }

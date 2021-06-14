@@ -1,9 +1,4 @@
-import {
-  Component,
-  Element,
-  h,
-  Prop,
-} from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'aegis-editable-list',
@@ -20,15 +15,16 @@ export class EditableList {
   name: string = '';
 
   @Prop({ mutable: true, reflect: true })
-  value: string = '';
+  value: any;
 
   componentDidLoad() {
+    const json = JSON.stringify(this.value);
     if (this.inputEl === null) {
       const parentEl = this.el.parentElement;
       this.inputEl = parentEl.ownerDocument.createElement('input');
-      this.inputEl.type = 'hidden';
+      this.inputEl.type = 'text';
       this.inputEl.name = this.name;
-      this.inputEl.value = this.value;
+      this.inputEl.value = json;
       parentEl.append(this.inputEl);
     }
   }

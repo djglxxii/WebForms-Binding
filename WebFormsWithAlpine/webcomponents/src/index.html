@@ -7,10 +7,12 @@
 
     <script type="module" src="/build/webcomponents.esm.js"></script>
     <script nomodule src="/build/webcomponents.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
   </head>
   <body>
-    <form method='post'>
-      <aegis-editable-list></aegis-editable-list>
+    <form method='post' x-data='{GenderOptions:[{Item1:0,Item2:"Male"},{Item1:1,Item2:"Female"},{Item1:3,Item2:"Other"}],Firstname:"David",Lastname:"Gardner",Zipcode:22963,Gender:"0"}' >
+      <aegis-editable-list name='GenderOptions' x-model='GenderOptions'></aegis-editable-list>
     </form>
   </body>
 </html>

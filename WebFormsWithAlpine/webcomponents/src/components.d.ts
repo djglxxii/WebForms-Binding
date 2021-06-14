@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AegisEditableList {
         "name": string;
-        "value": string;
+        "value": any;
     }
     interface MyComponent {
         /**
@@ -46,7 +46,7 @@ declare global {
 declare namespace LocalJSX {
     interface AegisEditableList {
         "name"?: string;
-        "value"?: string;
+        "value"?: any;
     }
     interface MyComponent {
         /**
