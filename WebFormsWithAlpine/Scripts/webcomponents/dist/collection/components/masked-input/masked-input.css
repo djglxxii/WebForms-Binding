@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+span.material-icons {
+  margin-left: 5px;
+  cursor: pointer;
+  user-select: none;
+}

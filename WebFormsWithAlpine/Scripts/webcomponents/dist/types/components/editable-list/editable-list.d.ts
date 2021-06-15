@@ -1,8 +1,7 @@
 export declare class EditableList {
-  private inputEl;
-  el: any;
-  name: string;
+  parsedData: any[];
+  propertyName: string;
   value: string;
-  componentDidLoad(): void;
+  componentWillLoad(): void;
   render(): any;
 }

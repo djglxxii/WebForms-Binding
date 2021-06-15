@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div>
-        <aegis-editable-list id="ctl00$MainContent$GenderOptions" x-model="ctl00$MainContent$GenderOptions"></aegis-editable-list>
+        <aeg-masked-input name="MyPassword" value="Default"></aeg-masked-input>
     </div>
 
     <div>

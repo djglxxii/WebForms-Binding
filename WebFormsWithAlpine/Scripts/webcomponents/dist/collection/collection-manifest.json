@@ -1,6 +1,7 @@
 {
   "entries": [
     "./components/editable-list/editable-list.js",
+    "./components/masked-input/masked-input.js",
     "./components/my-component/my-component.js"
   ],
   "compiler": {

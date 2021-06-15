@@ -1,6 +1,12 @@
-/* webcomponents custom elements bundle */
+/* AegisWebComponents custom elements bundle */
 
 import type { Components, JSX } from "../types/components";
+
+interface AegMaskedInput extends Components.AegMaskedInput, HTMLElement {}
+export const AegMaskedInput: {
+  prototype: AegMaskedInput;
+  new (): AegMaskedInput;
+};
 
 interface AegisEditableList extends Components.AegisEditableList, HTMLElement {}
 export const AegisEditableList: {

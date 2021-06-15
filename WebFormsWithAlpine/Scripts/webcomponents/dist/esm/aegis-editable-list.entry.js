@@ -1,30 +1,18 @@
-import { r as registerInstance, h, g as getElement } from './index-f00b599d.js';
+import { r as registerInstance, h } from './index-fb5d324f.js';
 
 const editableListCss = "";
 
 const EditableList = class {
   constructor(hostRef) {
     registerInstance(this, hostRef);
-    this.inputEl = null;
-    this.name = '';
-    this.value = '';
   }
-  componentDidLoad() {
-    const json = JSON.stringify(this.value);
-    console.log(json);
-    if (this.inputEl === null) {
-      const parentEl = this.el.parentElement;
-      this.inputEl = parentEl.ownerDocument.createElement('input');
-      this.inputEl.type = 'text';
-      this.inputEl.name = this.name;
-      this.inputEl.value = json;
-      parentEl.append(this.inputEl);
-    }
+  componentWillLoad() {
+    console.log(this.value);
+    //this.parsedData = JSON.parse(this.value);
   }
   render() {
-    return (h("div", { class: 'container' }, "Editable List"));
+    return (h("div", null, h("input", { id: this.propertyName, name: this.propertyName, type: 'hidden', value: this.value })));
   }
-  get el() { return getElement(this); }
 };
 EditableList.style = editableListCss;
 

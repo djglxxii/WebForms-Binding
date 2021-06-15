@@ -119,8 +119,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Pages\MyPage.aspx" />
-    <Content Include="Scripts\webcomponents\dist\webcomponents\webcomponents.esm.js" />
-    <Content Include="Scripts\webcomponents\dist\webcomponents\webcomponents.js" />
+    <Content Include="Scripts\webcomponents\dist\aegis-web-components\aegis-web-components.esm.js" />
+    <Content Include="Scripts\webcomponents\dist\aegis-web-components\aegis-web-components.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />

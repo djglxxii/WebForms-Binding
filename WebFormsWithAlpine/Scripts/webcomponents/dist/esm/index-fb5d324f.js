@@ -1,4 +1,4 @@
-const NAMESPACE = 'webcomponents';
+const NAMESPACE = 'aegis-web-components';
 
 let scopeId;
 let hostTagName;
@@ -114,6 +114,9 @@ const attachStyles = (hostRef) => {
         // DOM WRITE!!
         elm['s-sc'] = scopeId;
         elm.classList.add(scopeId + '-h');
+        if (flags & 2 /* scopedCssEncapsulation */) {
+            elm.classList.add(scopeId + '-s');
+        }
     }
     endAttachStyles();
 };
@@ -217,13 +220,50 @@ const isHost = (node) => node && node.$tag$ === Host;
 const setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags) => {
     if (oldValue !== newValue) {
         let isProp = isMemberInElement(elm, memberName);
-        memberName.toLowerCase();
+        let ln = memberName.toLowerCase();
         if (memberName === 'class') {
             const classList = elm.classList;
             const oldClasses = parseClassList(oldValue);
             const newClasses = parseClassList(newValue);
             classList.remove(...oldClasses.filter(c => c && !newClasses.includes(c)));
             classList.add(...newClasses.filter(c => c && !oldClasses.includes(c)));
+        }
+        else if ((!isProp ) && memberName[0] === 'o' && memberName[1] === 'n') {
+            // Event Handlers
+            // so if the member name starts with "on" and the 3rd characters is
+            // a capital letter, and it's not already a member on the element,
+            // then we're assuming it's an event listener
+            if (memberName[2] === '-') {
+                // on- prefixed events
+                // allows to be explicit about the dom event to listen without any magic
+                // under the hood:
+                // <my-cmp on-click> // listens for "click"
+                // <my-cmp on-Click> // listens for "Click"
+                // <my-cmp on-ionChange> // listens for "ionChange"
+                // <my-cmp on-EVENTS> // listens for "EVENTS"
+                memberName = memberName.slice(3);
+            }
+            else if (isMemberInElement(win, ln)) {
+                // standard event
+                // the JSX attribute could have been "onMouseOver" and the
+                // member name "onmouseover" is on the window's prototype
+                // so let's add the listener "mouseover", which is all lowercased
+                memberName = ln.slice(2);
+            }
+            else {
+                // custom event
+                // the JSX attribute could have been "onMyCustomEvent"
+                // so let's trim off the "on" prefix and lowercase the first character
+                // and add the listener "myCustomEvent"
+                // except for the first character, we keep the event name case
+                memberName = ln[2] + memberName.slice(3);
+            }
+            if (oldValue) {
+                plt.rel(elm, memberName, oldValue, false);
+            }
+            if (newValue) {
+                plt.ael(elm, memberName, newValue, false);
+            }
         }
         else {
             // Set property if it exists and it's not a SVG
@@ -479,7 +519,6 @@ const renderVdom = (hostRef, renderFnResults) => {
     // synchronous patch
     patch(oldVNode, rootVnode);
 };
-const getElement = (ref) => (getHostRef(ref).$hostElement$ );
 const emitEvent = (elm, name, opts) => {
     const ev = plt.ce(name, opts);
     elm.dispatchEvent(ev);
@@ -509,6 +548,11 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
     const endSchedule = createTime('scheduleUpdate', hostRef.$cmpMeta$.$tagName$);
     const instance = hostRef.$lazyInstance$ ;
     let promise;
+    if (isInitialLoad) {
+        {
+            promise = safeCall(instance, 'componentWillLoad');
+        }
+    }
     endSchedule();
     return then(promise, () => updateComponent(hostRef, instance, isInitialLoad));
 };
@@ -643,6 +687,11 @@ const addHydratedFlag = (elm) => (elm.classList.add('hydrated') );
 const parsePropertyValue = (propValue, propType) => {
     // ensure this value is of the correct prop type
     if (propValue != null && !isComplexType(propValue)) {
+        if (propType & 4 /* Boolean */) {
+            // per the HTML spec, any string value means it is a boolean true value
+            // but we'll cheat here and say that the string "false" is the boolean false
+            return propValue === 'false' ? false : propValue === '' || !!propValue;
+        }
         if (propType & 1 /* String */) {
             // could have been passed as a number or boolean
             // but we still want it as a string
@@ -1064,4 +1113,4 @@ const flush = () => {
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-export { CSS as C, NAMESPACE as N, promiseResolve as a, bootstrapLazy as b, doc as d, getElement as g, h, plt as p, registerInstance as r, win as w };
+export { CSS as C, NAMESPACE as N, promiseResolve as a, bootstrapLazy as b, doc as d, h, plt as p, registerInstance as r, win as w };

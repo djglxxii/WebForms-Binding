@@ -1,27 +1,15 @@
-import { Component, Element, h, Prop, } from '@stencil/core';
+import { Component, h, Prop, State, } from '@stencil/core';
 export class EditableList {
-  constructor() {
-    this.inputEl = null;
-    this.name = '';
-    this.value = '';
-  }
-  componentDidLoad() {
-    const json = JSON.stringify(this.value);
-    console.log(json);
-    if (this.inputEl === null) {
-      const parentEl = this.el.parentElement;
-      this.inputEl = parentEl.ownerDocument.createElement('input');
-      this.inputEl.type = 'text';
-      this.inputEl.name = this.name;
-      this.inputEl.value = json;
-      parentEl.append(this.inputEl);
-    }
+  componentWillLoad() {
+    console.log(this.value);
+    //this.parsedData = JSON.parse(this.value);
   }
   render() {
-    return (h("div", { class: 'container' }, "Editable List"));
+    return (h("div", null,
+      h("input", { id: this.propertyName, name: this.propertyName, type: 'hidden', value: this.value })));
   }
   static get is() { return "aegis-editable-list"; }
-  static get encapsulation() { return "shadow"; }
+  static get encapsulation() { return "scoped"; }
   static get originalStyleUrls() { return {
     "$": ["editable-list.css"]
   }; }
@@ -29,7 +17,7 @@ export class EditableList {
     "$": ["editable-list.css"]
   }; }
   static get properties() { return {
-    "name": {
+    "propertyName": {
       "type": "string",
       "mutable": false,
       "complexType": {
@@ -43,13 +31,12 @@ export class EditableList {
         "tags": [],
         "text": ""
       },
-      "attribute": "name",
-      "reflect": false,
-      "defaultValue": "''"
+      "attribute": "property-name",
+      "reflect": false
     },
     "value": {
       "type": "string",
-      "mutable": true,
+      "mutable": false,
       "complexType": {
         "original": "string",
         "resolved": "string",
@@ -62,9 +49,10 @@ export class EditableList {
         "text": ""
       },
       "attribute": "value",
-      "reflect": true,
-      "defaultValue": "''"
+      "reflect": false
     }
   }; }
-  static get elementRef() { return "el"; }
+  static get states() { return {
+    "parsedData": {}
+  }; }
 }

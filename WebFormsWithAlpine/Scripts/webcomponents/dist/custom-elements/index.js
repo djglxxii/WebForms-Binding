@@ -1,5 +1,28 @@
-import { attachShadow, h, proxyCustomElement } from '@stencil/core/internal/client';
+import { h, attachShadow, proxyCustomElement } from '@stencil/core/internal/client';
 export { setAssetPath, setPlatformOptions } from '@stencil/core/internal/client';
+
+const maskedInputCss = ".container.sc-aeg-masked-input{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}span.material-icons.sc-aeg-masked-input{margin-left:5px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}";
+
+const MaskedInput = class extends HTMLElement {
+  constructor() {
+    super();
+    this.__registerHost();
+    this.isVisible = false;
+  }
+  componentDidLoad() {
+  }
+  render() {
+    let icon;
+    if (this.isVisible) {
+      icon = 'visibility';
+    }
+    else {
+      icon = 'visibility_off';
+    }
+    return (h("div", { class: 'container' }, h("input", { type: this.isVisible ? 'text' : 'password', name: this.name, value: this.value }), h("span", { class: 'material-icons', onClick: () => this.isVisible = !this.isVisible }, icon)));
+  }
+  static get style() { return maskedInputCss; }
+};
 
 const editableListCss = "";
 
@@ -7,27 +30,14 @@ const EditableList = class extends HTMLElement {
   constructor() {
     super();
     this.__registerHost();
-    attachShadow(this);
-    this.inputEl = null;
-    this.name = '';
-    this.value = '';
   }
-  componentDidLoad() {
-    const json = JSON.stringify(this.value);
-    console.log(json);
-    if (this.inputEl === null) {
-      const parentEl = this.el.parentElement;
-      this.inputEl = parentEl.ownerDocument.createElement('input');
-      this.inputEl.type = 'text';
-      this.inputEl.name = this.name;
-      this.inputEl.value = json;
-      parentEl.append(this.inputEl);
-    }
+  componentWillLoad() {
+    console.log(this.value);
+    //this.parsedData = JSON.parse(this.value);
   }
   render() {
-    return (h("div", { class: 'container' }, "Editable List"));
+    return (h("div", null, h("input", { id: this.propertyName, name: this.propertyName, type: 'hidden', value: this.value })));
   }
-  get el() { return this; }
   static get style() { return editableListCss; }
 };
 
@@ -52,12 +62,14 @@ const MyComponent$1 = class extends HTMLElement {
   static get style() { return myComponentCss; }
 };
 
-const AegisEditableList = /*@__PURE__*/proxyCustomElement(EditableList, [1,"aegis-editable-list",{"name":[1],"value":[1537]}]);
+const AegMaskedInput = /*@__PURE__*/proxyCustomElement(MaskedInput, [2,"aeg-masked-input",{"name":[1],"value":[1],"isVisible":[1540,"is-visible"]}]);
+const AegisEditableList = /*@__PURE__*/proxyCustomElement(EditableList, [2,"aegis-editable-list",{"propertyName":[1,"property-name"],"value":[1],"parsedData":[32]}]);
 const MyComponent = /*@__PURE__*/proxyCustomElement(MyComponent$1, [1,"my-component",{"first":[1],"middle":[1],"last":[1]}]);
 const defineCustomElements = (opts) => {
   if (typeof customElements !== 'undefined') {
     [
-      AegisEditableList,
+      AegMaskedInput,
+  AegisEditableList,
   MyComponent
     ].forEach(cmp => {
       if (!customElements.get(cmp.is)) {
@@ -67,4 +79,4 @@ const defineCustomElements = (opts) => {
   }
 };
 
-export { AegisEditableList, MyComponent, defineCustomElements };
+export { AegMaskedInput, AegisEditableList, MyComponent, defineCustomElements };

@@ -6,8 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 export namespace Components {
-    interface AegisEditableList {
+    interface AegMaskedInput {
+        "isVisible": boolean;
         "name": string;
+        "value": string;
+    }
+    interface AegisEditableList {
+        "propertyName": string;
         "value": string;
     }
     interface MyComponent {
@@ -26,6 +31,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAegMaskedInputElement extends Components.AegMaskedInput, HTMLStencilElement {
+    }
+    var HTMLAegMaskedInputElement: {
+        prototype: HTMLAegMaskedInputElement;
+        new (): HTMLAegMaskedInputElement;
+    };
     interface HTMLAegisEditableListElement extends Components.AegisEditableList, HTMLStencilElement {
     }
     var HTMLAegisEditableListElement: {
@@ -39,13 +50,19 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "aeg-masked-input": HTMLAegMaskedInputElement;
         "aegis-editable-list": HTMLAegisEditableListElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
-    interface AegisEditableList {
+    interface AegMaskedInput {
+        "isVisible"?: boolean;
         "name"?: string;
+        "value"?: string;
+    }
+    interface AegisEditableList {
+        "propertyName"?: string;
         "value"?: string;
     }
     interface MyComponent {
@@ -63,6 +80,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "aeg-masked-input": AegMaskedInput;
         "aegis-editable-list": AegisEditableList;
         "my-component": MyComponent;
     }
@@ -71,6 +89,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "aeg-masked-input": LocalJSX.AegMaskedInput & JSXBase.HTMLAttributes<HTMLAegMaskedInputElement>;
             "aegis-editable-list": LocalJSX.AegisEditableList & JSXBase.HTMLAttributes<HTMLAegisEditableListElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
