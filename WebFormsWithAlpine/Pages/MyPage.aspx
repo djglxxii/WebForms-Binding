@@ -7,7 +7,7 @@
 
     <div>
         <%--<aeg-masked-input name="MyPassword" value="Default"></aeg-masked-input>--%>
-        <cc:MaskedInput runat="server" name="MyPassword" Value="Default"></cc:MaskedInput>
+        <cc:MaskedInput ID="Password" runat="server" ></cc:MaskedInput>
     </div>
 
     <div>

@@ -39,27 +39,10 @@ namespace WebFormsWithAlpine.Controls
 
         public virtual string GetData()
         {
-            using (var stringWriter = new StringWriter())
-            using (var jsonWriter = new JsonTextWriter(stringWriter))
-            {
-                var serializer = new JsonSerializer
-                {
-                    // DefaultContract ensures PascalCasing to match C# style.
-                    ContractResolver = new DefaultContractResolver()
-                };
-
-                // We don't want quotes around object names
-                jsonWriter.QuoteName = false;
-                serializer.Serialize(jsonWriter, Model);
-
-                var jsObject = stringWriter.ToString();
-
-                return jsObject;
-            }
-            //var settings = new JsonSerializerSettings();
-            //settings.ContractResolver = new PageContractResolver(this);
-            //var json = JsonConvert.SerializeObject(Model, settings);
-            //return json;
+            var settings = new JsonSerializerSettings();
+            settings.ContractResolver = new PageContractResolver(this);
+            var json = JsonConvert.SerializeObject(Model, settings);
+            return json;
         }
 
         public override void RenderControl(HtmlTextWriter writer)

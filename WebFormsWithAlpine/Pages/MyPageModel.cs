@@ -18,6 +18,9 @@ namespace WebFormsWithAlpine.Pages
         public string Gender { get; set; }
 
         [RequiresUniquePrefix]
+        public string Password { get; set; }
+
+        [RequiresUniquePrefix]
         public List<(int, string)> GenderOptions = new List<(int, string)>();
     }
 }

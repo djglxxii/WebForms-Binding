@@ -1,4 +1,5 @@
-﻿using System.Web.UI;
+﻿using System.Runtime.CompilerServices;
+using System.Web.UI;
 using System.Web.UI.HtmlControls;
 
 namespace WebFormsWithAlpine.Controls
@@ -14,9 +15,11 @@ namespace WebFormsWithAlpine.Controls
                 writer.AddAttribute("is-visible", null);
             }
 
-            writer.AddAttribute("name", this.Name);
-            writer.AddAttribute("value", this.Value);
+            writer.AddAttribute("name", this.UniqueID);
+            writer.AddAttribute("x-model", this.UniqueID);
 
+            writer.AddAttribute("value", this.Value);
+            
             writer.RenderBeginTag("aeg-masked-input");
             writer.RenderEndTag();
         }

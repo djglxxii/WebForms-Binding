@@ -15,6 +15,8 @@ namespace WebFormsWithAlpine.Pages
             Model.GenderOptions.Add((0, "Male"));
             Model.GenderOptions.Add((1, "Female"));
             Model.GenderOptions.Add((3, "Other"));
+
+            Model.Password = "pass123";
         }
     }
 }
