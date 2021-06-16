@@ -144,6 +144,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MaskedInput.cs" />
     <Compile Include="Controls\PageValueProvider.cs" />
     <Compile Include="Controls\PageContractResolver.cs" />
     <Compile Include="Controls\PageWithModel.cs">
