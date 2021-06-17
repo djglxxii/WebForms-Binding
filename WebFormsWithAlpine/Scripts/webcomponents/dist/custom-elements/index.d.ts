@@ -8,16 +8,16 @@ export const AegMaskedInput: {
   new (): AegMaskedInput;
 };
 
+interface AegValidationMessage extends Components.AegValidationMessage, HTMLElement {}
+export const AegValidationMessage: {
+  prototype: AegValidationMessage;
+  new (): AegValidationMessage;
+};
+
 interface AegisEditableList extends Components.AegisEditableList, HTMLElement {}
 export const AegisEditableList: {
   prototype: AegisEditableList;
   new (): AegisEditableList;
-};
-
-interface MyComponent extends Components.MyComponent, HTMLElement {}
-export const MyComponent: {
-  prototype: MyComponent;
-  new (): MyComponent;
 };
 
 /**

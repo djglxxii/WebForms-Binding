@@ -144,13 +144,14 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MaskedInput.cs" />
+    <Compile Include="Controls\MaskedInputControl.cs" />
     <Compile Include="Controls\PageValueProvider.cs" />
     <Compile Include="Controls\PageContractResolver.cs" />
     <Compile Include="Controls\PageWithModel.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\RequiresUniquePrefix.cs" />
+    <Compile Include="Controls\ValidationMessageControl.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

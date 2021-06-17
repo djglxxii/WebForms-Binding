@@ -4,15 +4,15 @@ using System.Web.UI.HtmlControls;
 
 namespace WebFormsWithAlpine.Controls
 {
-    public class MaskedInput : HtmlInputGenericControl
+    public class MaskedInputControl : HtmlInputGenericControl
     {
-        public bool IsVisible { get; set; } = false;
+        public bool IsMasked { get; set; } = true;
 
         protected override void Render(HtmlTextWriter writer)
         {
-            if (IsVisible)
+            if (IsMasked)
             {
-                writer.AddAttribute("is-visible", null);
+                writer.AddAttribute("is-masked", null);
             }
 
             writer.AddAttribute("name", this.UniqueID);

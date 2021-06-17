@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-fb5d324f.js';
+import { r as registerInstance, h } from './index-96c20a2b.js';
 
 const editableListCss = "";
 

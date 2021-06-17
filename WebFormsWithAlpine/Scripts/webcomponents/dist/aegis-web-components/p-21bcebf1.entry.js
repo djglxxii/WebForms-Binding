@@ -1,0 +1,1 @@
+import{r as t,h as s}from"./p-adabd8ea.js";const e=class{constructor(s){t(this,s)}componentWillLoad(){console.log(this.value)}render(){return s("div",null,s("input",{id:this.propertyName,name:this.propertyName,type:"hidden",value:this.value}))}};e.style="";export{e as aegis_editable_list}

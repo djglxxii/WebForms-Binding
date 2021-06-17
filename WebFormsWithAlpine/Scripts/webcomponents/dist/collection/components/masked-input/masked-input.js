@@ -1,21 +1,15 @@
 import { Component, h, Prop } from '@stencil/core';
 export class MaskedInput {
   constructor() {
-    this.isVisible = false;
-  }
-  componentDidLoad() {
+    this.isMasked = true;
   }
   render() {
-    let icon;
-    if (this.isVisible) {
-      icon = 'visibility';
-    }
-    else {
-      icon = 'visibility_off';
-    }
+    const icon = this.isMasked
+      ? 'visibility_off'
+      : 'visibility';
     return (h("div", { class: 'container' },
-      h("input", { type: this.isVisible ? 'text' : 'password', name: this.name, value: this.value }),
-      h("span", { class: 'material-icons', onClick: () => this.isVisible = !this.isVisible }, icon)));
+      h("input", { type: this.isMasked ? 'password' : 'text', name: this.name, value: this.value }),
+      h("span", { class: 'material-icons', onClick: () => this.isMasked = !this.isMasked }, icon)));
   }
   static get is() { return "aeg-masked-input"; }
   static get encapsulation() { return "scoped"; }
@@ -60,7 +54,7 @@ export class MaskedInput {
       "attribute": "value",
       "reflect": false
     },
-    "isVisible": {
+    "isMasked": {
       "type": "boolean",
       "mutable": true,
       "complexType": {
@@ -74,9 +68,9 @@ export class MaskedInput {
         "tags": [],
         "text": ""
       },
-      "attribute": "is-visible",
+      "attribute": "is-masked",
       "reflect": true,
-      "defaultValue": "false"
+      "defaultValue": "true"
     }
   }; }
 }

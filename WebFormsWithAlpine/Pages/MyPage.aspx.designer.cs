@@ -7,20 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebFormsWithAlpine.Pages
-{
-
-
-    public partial class MyPage
-    {
-
+namespace WebFormsWithAlpine.Pages {
+    
+    
+    public partial class MyPage {
+        
         /// <summary>
         /// Password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
-        protected global::WebFormsWithAlpine.Controls.MaskedInput Password;
+        protected global::WebFormsWithAlpine.Controls.MaskedInputControl Password;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new WebFormsWithAlpine.SiteMaster Master {
+            get {
+                return ((WebFormsWithAlpine.SiteMaster)(base.Master));
+            }
+        }
     }
 }

@@ -7,27 +7,16 @@
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 export namespace Components {
     interface AegMaskedInput {
-        "isVisible": boolean;
+        "isMasked": boolean;
         "name": string;
         "value": string;
+    }
+    interface AegValidationMessage {
+        "message": string;
     }
     interface AegisEditableList {
         "propertyName": string;
         "value": string;
-    }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
     }
 }
 declare global {
@@ -37,52 +26,41 @@ declare global {
         prototype: HTMLAegMaskedInputElement;
         new (): HTMLAegMaskedInputElement;
     };
+    interface HTMLAegValidationMessageElement extends Components.AegValidationMessage, HTMLStencilElement {
+    }
+    var HTMLAegValidationMessageElement: {
+        prototype: HTMLAegValidationMessageElement;
+        new (): HTMLAegValidationMessageElement;
+    };
     interface HTMLAegisEditableListElement extends Components.AegisEditableList, HTMLStencilElement {
     }
     var HTMLAegisEditableListElement: {
         prototype: HTMLAegisEditableListElement;
         new (): HTMLAegisEditableListElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLElementTagNameMap {
         "aeg-masked-input": HTMLAegMaskedInputElement;
+        "aeg-validation-message": HTMLAegValidationMessageElement;
         "aegis-editable-list": HTMLAegisEditableListElement;
-        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
     interface AegMaskedInput {
-        "isVisible"?: boolean;
+        "isMasked"?: boolean;
         "name"?: string;
         "value"?: string;
+    }
+    interface AegValidationMessage {
+        "message"?: string;
     }
     interface AegisEditableList {
         "propertyName"?: string;
         "value"?: string;
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
     interface IntrinsicElements {
         "aeg-masked-input": AegMaskedInput;
+        "aeg-validation-message": AegValidationMessage;
         "aegis-editable-list": AegisEditableList;
-        "my-component": MyComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -90,8 +68,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "aeg-masked-input": LocalJSX.AegMaskedInput & JSXBase.HTMLAttributes<HTMLAegMaskedInputElement>;
+            "aeg-validation-message": LocalJSX.AegValidationMessage & JSXBase.HTMLAttributes<HTMLAegValidationMessageElement>;
             "aegis-editable-list": LocalJSX.AegisEditableList & JSXBase.HTMLAttributes<HTMLAegisEditableListElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }

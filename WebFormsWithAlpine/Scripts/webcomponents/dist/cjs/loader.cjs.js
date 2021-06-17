@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-a45702ad.js');
+const index = require('./index-9a89354e.js');
 
 /*
  Stencil Client Patch Esm v2.6.0 | MIT Licensed | https://stenciljs.com
@@ -28,7 +28,7 @@ const patchEsm = () => {
 const defineCustomElements = (win, options) => {
   if (typeof window === 'undefined') return Promise.resolve();
   return patchEsm().then(() => {
-  return index.bootstrapLazy([["aeg-masked-input.cjs",[[2,"aeg-masked-input",{"name":[1],"value":[1],"isVisible":[1540,"is-visible"]}]]],["aegis-editable-list.cjs",[[2,"aegis-editable-list",{"propertyName":[1,"property-name"],"value":[1],"parsedData":[32]}]]],["my-component.cjs",[[1,"my-component",{"first":[1],"middle":[1],"last":[1]}]]]], options);
+  return index.bootstrapLazy([["aeg-masked-input.cjs",[[2,"aeg-masked-input",{"name":[1],"value":[1],"isMasked":[1540,"is-masked"]}]]],["aeg-validation-message.cjs",[[1,"aeg-validation-message",{"message":[1],"showMessage":[32]}]]],["aegis-editable-list.cjs",[[2,"aegis-editable-list",{"propertyName":[1,"property-name"],"value":[1],"parsedData":[32]}]]]], options);
   });
 };
 

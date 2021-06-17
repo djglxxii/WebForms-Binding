@@ -1,4 +1,4 @@
-import { p as plt, w as win, d as doc, N as NAMESPACE, a as promiseResolve, b as bootstrapLazy } from './index-fb5d324f.js';
+import { p as plt, w as win, d as doc, N as NAMESPACE, a as promiseResolve, b as bootstrapLazy } from './index-96c20a2b.js';
 
 /*
  Stencil Client Patch Browser v2.6.0 | MIT Licensed | https://stenciljs.com
@@ -77,5 +77,5 @@ const patchDynamicImport = (base, orgScriptElm) => {
 };
 
 patchBrowser().then(options => {
-  return bootstrapLazy([["aeg-masked-input",[[2,"aeg-masked-input",{"name":[1],"value":[1],"isVisible":[1540,"is-visible"]}]]],["aegis-editable-list",[[2,"aegis-editable-list",{"propertyName":[1,"property-name"],"value":[1],"parsedData":[32]}]]],["my-component",[[1,"my-component",{"first":[1],"middle":[1],"last":[1]}]]]], options);
+  return bootstrapLazy([["aeg-masked-input",[[2,"aeg-masked-input",{"name":[1],"value":[1],"isMasked":[1540,"is-masked"]}]]],["aeg-validation-message",[[1,"aeg-validation-message",{"message":[1],"showMessage":[32]}]]],["aegis-editable-list",[[2,"aegis-editable-list",{"propertyName":[1,"property-name"],"value":[1],"parsedData":[32]}]]]], options);
 });

@@ -6,8 +6,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div>
-        <%--<aeg-masked-input name="MyPassword" value="Default"></aeg-masked-input>--%>
-        <cc:MaskedInput ID="Password" runat="server" ></cc:MaskedInput>
+        <cc:ValidationMessageControl runat="server" Message="Hello World">
+            <cc:MaskedInputControl ID="Password" runat="server"/>
+        </cc:ValidationMessageControl>
     </div>
 
     <div>
